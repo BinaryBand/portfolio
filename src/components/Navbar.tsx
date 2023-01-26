@@ -2,7 +2,7 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import IconButton from '@mui/material/IconButton';
@@ -30,7 +30,7 @@ export default class Navbar extends React.Component<NavbarProps> {
   constructor(props: NavbarProps) {
     super(props);
 
-    this.title = props.title || 'Homepage';
+    this.title = props.title?.toUpperCase() || 'HOMEPAGE';
 
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
@@ -47,15 +47,14 @@ export default class Navbar extends React.Component<NavbarProps> {
   public render(): JSX.Element {
     return (
       <>
-        <AppBar>
+        <AppBar position="static">
           <Container>
-            <Toolbar>
-              <IconButton aria-label="open drawer" color="inherit" sx={{ mr: 2 }} onClick={this.openDrawer}>
+            <Stack alignItems="center" direction="row" spacing={2} paddingY={1}>
+              <IconButton aria-label="open drawer" color="inherit" onClick={this.openDrawer} sx={{ ml: 0, pl: 0 }}>
                 <MenuIcon />
               </IconButton>
 
               <Typography variant="h6" component={Link} to="/" sx={{
-                mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontWeight: 600,
                 color: 'inherit',
@@ -63,7 +62,7 @@ export default class Navbar extends React.Component<NavbarProps> {
               }}>
                 {this.title}
               </Typography>
-            </Toolbar>
+            </Stack>
           </Container>
         </AppBar>
 

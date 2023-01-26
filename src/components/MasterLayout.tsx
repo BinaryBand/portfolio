@@ -9,7 +9,7 @@ export default function MasterLayout(): JSX.Element {
     <>
       <Navbar title="Shane Davenport" />
 
-      <Container>
+      <Container className="App">
         <Outlet />
       </Container>
     </>
