@@ -114,7 +114,7 @@ export default function Resume(): JSX.Element {
     }}>
       <Grid container spacing={2}>
         <Grid xs={12} sm={6} lg={4}>
-          <Typography variant="h4" sx={{ whiteSpace: 'nowrap' }}>Shane Davenport</Typography>
+          <Typography variant="h4">Shane Davenport</Typography>
           <Typography variant="h5" color="primary">Software Engineer</Typography>
         </Grid>
 
@@ -124,7 +124,7 @@ export default function Resume(): JSX.Element {
           paddingBottom: 4,
         }}>
           <Typography paragraph>example@email.com</Typography>
-          <Typography paragraph>(480) 253-6044</Typography>
+          <Typography paragraph>(555) 555-5555</Typography>
           <Typography paragraph>San Tan Valley, AZ 85143</Typography>
         </Grid>
 
