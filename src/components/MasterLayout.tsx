@@ -1,6 +1,6 @@
-import Container from "@mui/material/Container";
 import Navbar, { TabData } from "./Navbar";
 
+import Container from "@mui/material/Container";
 import ArticleIcon from '@mui/icons-material/Article';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -8,8 +8,8 @@ import { Outlet, useLocation } from "react-router-dom";
 
 
 const TABS: TabData[] = [
-  { title: 'RESUME', link: '/resume', icon: <ArticleIcon /> },
-  { title: 'SETTINGS', link: '/settings', icon: <SettingsIcon /> },
+  { title: 'Resume', link: '/resume', icon: <ArticleIcon /> },
+  { title: 'Settings', link: '/settings', icon: <SettingsIcon /> },
 ];
 
 export default function MasterLayout(): JSX.Element {

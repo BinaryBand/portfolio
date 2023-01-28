@@ -1,22 +1,23 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import Stack from '@mui/material/Stack';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import styled from '@mui/material/styles/styled';
 
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
 
 import { Link } from "react-router-dom";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import styled from '@mui/material/styles/styled';
 
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -77,12 +78,13 @@ export default class Navbar extends React.Component<NavbarProps> {
             <Stack alignItems="center" direction="row" justifyContent="space-between" paddingY={1}>
               <IconButton aria-label="open drawer" color="inherit" onClick={this.openDrawer} sx={{
                 display: { xs: 'block', md: 'none' },
+                marginTop: 1,
               }}>
-                <MenuIcon />
+                <MenuIcon fontSize="large" />
               </IconButton>
 
               <Typography noWrap variant="h6" component={Link} to="/" sx={{
-                fontWeight: 600,
+                fontWeight: 700,
                 color: 'inherit',
                 textDecoration: 'none',
               }}>
@@ -97,18 +99,17 @@ export default class Navbar extends React.Component<NavbarProps> {
                     const active: boolean = this.props.currentPath === tab.link;
 
                     return (
-                      <Typography component={Link} to={tab.link} sx={{
+                      <Button component={Link} to={tab.link} startIcon={tab.icon} sx={{
                         fontWeight: 500,
                         color: 'inherit',
                         position: 'relative',
-                        textDecoration: 'none',
 
                         '&:before': {
                           content: "''",
                           position: 'absolute',
                           width: active ? '100%' : '0',
                           height: '2px',
-                          bottom: '-3px',
+                          bottom: 0,
                           left: '50%',
                           transform: 'translate(-50%,0%)',
                           backgroundColor: 'white',
@@ -122,7 +123,7 @@ export default class Navbar extends React.Component<NavbarProps> {
                         },
                       }}>
                         {tab.title}
-                      </Typography>
+                      </Button>
                     );
                   })
                 }
