@@ -80,7 +80,7 @@ export default class Navbar extends React.Component<NavbarProps> {
                 display: { xs: 'block', md: 'none' },
                 marginTop: 1,
               }}>
-                <MenuIcon fontSize="large" />
+                <MenuIcon />
               </IconButton>
 
               <Typography noWrap variant="h6" component={Link} to="/" sx={{

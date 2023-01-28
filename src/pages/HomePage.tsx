@@ -7,6 +7,10 @@ import Typography from "@mui/material/Typography";
 
 import CodeIcon from '@mui/icons-material/Code';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
 
 
 export default function HomePage(): JSX.Element {
@@ -33,9 +37,33 @@ export default function HomePage(): JSX.Element {
         </Grid>
       </Paper>
 
-      {/* <Typography variant="h3" mt={4}>
-        Projects
-      </Typography> */}
+      <Typography variant="h4" my={4} sx={{ textDecoration: 'underline' }}>
+        My Education
+      </Typography>
+
+      <Card elevation={3} sx={{ maxWidth: '50%' }}>
+        <CardMedia component="img" height="194" image="/ClipartKey_918318.png" alt="Brigham Young University — Idaho" />
+
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Bachelor of Science in Software Engineering, Minor in Computer Information Technology
+          </Typography>
+          <Typography variant="h5" component="div">
+            Brigham Young University — Idaho
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            AUGUST 2016 - MARCH 2021
+          </Typography>
+          <Typography variant="body2">
+            well meaning and kindly.
+            <br />
+            {'"a benevolent smile"'}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
     </>
   );
 }
