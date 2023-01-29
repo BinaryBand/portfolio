@@ -1,4 +1,5 @@
 import React from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -16,9 +17,53 @@ import styled from '@mui/material/styles/styled';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
+import SvgIcon from "@mui/icons-material/Code";
+import { SvgIconComponent } from "@mui/icons-material";
 
 import { Link } from "react-router-dom";
 
+
+export type TabData = {
+  title: string;
+  link: string;
+  icon: SvgIconComponent;
+};
+
+interface TabButtonProps extends TabData {
+  active?: boolean;
+};
+
+export class TabButton extends React.Component<TabButtonProps> {
+  public render(): JSX.Element {
+    return (
+      <Button component={Link} to={this.props.link} startIcon={<this.props.icon />} sx={{
+        fontWeight: 500,
+        color: 'inherit',
+        position: 'relative',
+
+        '&:before': {
+          content: "''",
+          position: 'absolute',
+          width: this.props.active ? '100%' : 0,
+          height: '2px',
+          bottom: 0,
+          left: '50%',
+          transform: 'translate(-50%,0%)',
+          backgroundColor: 'white',
+          visibility: this.props.active ? 'visible' : 'hidden',
+          transition: 'all 0.1s ease-in-out',
+        },
+
+        '&:hover:before': {
+          visibility: 'visible',
+          width: '100%',
+        },
+      }}>
+        {this.props.title}
+      </Button>
+    );
+  }
+}
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -27,12 +72,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'space-between',
   ...theme.mixins.toolbar,
 }));
-
-export type TabData = {
-  title: string;
-  link: string;
-  icon: JSX.Element;
-};
 
 type NavbarProps = {
   title?: string;
@@ -55,7 +94,7 @@ export default class Navbar extends React.Component<NavbarProps> {
   constructor(props: NavbarProps) {
     super(props);
 
-    this.title = props.title?.toUpperCase() || 'HOMEPAGE';
+    this.title = props.title || 'Homepage';
     this.tabs = props.tabs;
 
     this.openDrawer = this.openDrawer.bind(this);
@@ -96,34 +135,9 @@ export default class Navbar extends React.Component<NavbarProps> {
               }}>
                 {
                   this.tabs?.map((tab: TabData): JSX.Element => {
-                    const active: boolean = this.props.currentPath === tab.link;
-
                     return (
-                      <Button component={Link} to={tab.link} startIcon={tab.icon} sx={{
-                        fontWeight: 500,
-                        color: 'inherit',
-                        position: 'relative',
-
-                        '&:before': {
-                          content: "''",
-                          position: 'absolute',
-                          width: active ? '100%' : '0',
-                          height: '2px',
-                          bottom: 0,
-                          left: '50%',
-                          transform: 'translate(-50%,0%)',
-                          backgroundColor: 'white',
-                          visibility: active ? 'visible' : 'hidden',
-                          transition: 'all 0.1s ease-in-out',
-                        },
-
-                        '&:hover:before': {
-                          visibility: 'visible',
-                          width: '100%',
-                        },
-                      }}>
-                        {tab.title}
-                      </Button>
+                      <TabButton title={tab.title} link={tab.link} icon={tab.icon}
+                        active={this.props.currentPath === tab.link} />
                     );
                   })
                 }
@@ -164,7 +178,7 @@ export default class Navbar extends React.Component<NavbarProps> {
                   <ListItem key={tab.title} disablePadding>
                     <ListItemButton component={Link} to={tab.link} onClick={this.closeDrawer}>
                       <ListItemIcon>
-                        {tab.icon}
+                        <SvgIcon component={tab.icon} />
                       </ListItemIcon>
 
                       <ListItemText primary={tab.title} />
