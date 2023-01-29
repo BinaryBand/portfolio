@@ -23,6 +23,10 @@ import { SvgIconComponent } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 
+function scrollToTop(): void {
+  window.scrollTo({ top: 0 });
+}
+
 export type TabData = {
   title: string;
   link: string;
@@ -33,10 +37,10 @@ interface TabButtonProps extends TabData {
   active?: boolean;
 };
 
-export class TabButton extends React.Component<TabButtonProps> {
+class TabButton extends React.Component<TabButtonProps> {
   public render(): JSX.Element {
     return (
-      <Button component={Link} to={this.props.link} startIcon={<this.props.icon />} sx={{
+      <Button component={Link} to={this.props.link} startIcon={<this.props.icon />} onClick={scrollToTop} sx={{
         fontWeight: 500,
         color: 'inherit',
         position: 'relative',
@@ -74,9 +78,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 type NavbarProps = {
-  title?: string;
+  title: string;
   tabs?: TabData[];
   currentPath?: string;
+  fixed?: boolean;
+  backgroundColor?: string;
+  elevation?: number;
 };
 
 type NavbarState = {
@@ -84,8 +91,7 @@ type NavbarState = {
 };
 
 export default class Navbar extends React.Component<NavbarProps> {
-  private title: string;
-  private tabs: TabData[] | undefined;
+  private position: "fixed" | "static";
 
   public state: NavbarState = {
     isDrawerOpen: false,
@@ -94,8 +100,7 @@ export default class Navbar extends React.Component<NavbarProps> {
   constructor(props: NavbarProps) {
     super(props);
 
-    this.title = props.title || 'Homepage';
-    this.tabs = props.tabs;
+    this.position = props.fixed ? 'fixed' : 'static';
 
     this.openDrawer = this.openDrawer.bind(this);
     this.closeDrawer = this.closeDrawer.bind(this);
@@ -112,7 +117,9 @@ export default class Navbar extends React.Component<NavbarProps> {
   public render(): JSX.Element {
     return (
       <>
-        <AppBar position="static">
+        <AppBar position={this.position} elevation={this.props.elevation} sx={{
+          backgroundColor: this.props.backgroundColor,
+        }}>
           <Container>
             <Stack alignItems="center" direction="row" justifyContent="space-between" paddingY={1}>
               <IconButton aria-label="open drawer" color="inherit" onClick={this.openDrawer} sx={{
@@ -127,14 +134,14 @@ export default class Navbar extends React.Component<NavbarProps> {
                 color: 'inherit',
                 textDecoration: 'none',
               }}>
-                {this.title}
+                {this.props.title}
               </Typography>
 
               <Stack alignItems="center" direction="row" spacing={3} padding={0} sx={{
                 display: { xs: 'none', md: 'block' },
               }}>
                 {
-                  this.tabs?.map((tab: TabData): JSX.Element => {
+                  this.props.tabs?.map((tab: TabData): JSX.Element => {
                     return (
                       <TabButton title={tab.title} link={tab.link} icon={tab.icon}
                         active={this.props.currentPath === tab.link} />
@@ -161,7 +168,7 @@ export default class Navbar extends React.Component<NavbarProps> {
               color: 'inherit',
               textDecoration: 'none',
             }}>
-              {this.title}
+              {this.props.title}
             </Typography>
 
             <IconButton aria-label="close drawer" color="inherit" onClick={this.closeDrawer}>
@@ -173,7 +180,7 @@ export default class Navbar extends React.Component<NavbarProps> {
 
           <List>
             {
-              this.tabs?.map((tab: TabData): JSX.Element => {
+              this.props.tabs?.map((tab: TabData): JSX.Element => {
                 return (
                   <ListItem key={tab.title} disablePadding>
                     <ListItemButton component={Link} to={tab.link} onClick={this.closeDrawer}>

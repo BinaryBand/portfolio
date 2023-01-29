@@ -1,6 +1,5 @@
 import React from "react";
 
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -11,11 +10,8 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import CodeIcon from '@mui/icons-material/Code';
-import SchoolIcon from '@mui/icons-material/School';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import HandymanIcon from '@mui/icons-material/Handyman';
-import ArticleIcon from '@mui/icons-material/Article';
 import HtmlIcon from '@mui/icons-material/Html';
 import CssIcon from '@mui/icons-material/Css';
 import JavascriptIcon from '@mui/icons-material/Javascript';
@@ -28,8 +24,7 @@ import SvgIcon from "@mui/icons-material/Code";
 import { SvgIconComponent } from "@mui/icons-material";
 
 import Footer from "../components/Footer";
-import { TabButton } from "../components/Navbar";
-import { Link } from "react-router-dom";
+import Navbar, { TabData } from "../components/Navbar";
 
 
 type SkillProps = {
@@ -67,7 +62,11 @@ class Skill extends React.Component<SkillProps> {
 //   }
 // }
 
-export default function Experimental(): JSX.Element {
+type HomePageProps = {
+  tabs?: TabData[],
+};
+
+export default function Experimental(props: HomePageProps): JSX.Element {
   const primaryColor: string = '#1976d2';
 
   const thresholdTrigger: boolean = useScrollTrigger({
@@ -78,30 +77,8 @@ export default function Experimental(): JSX.Element {
 
   return (
     <>
-      <AppBar elevation={elevation} sx={{
-        transition: '0.1s',
-        backgroundColor: thresholdTrigger ? 'primary' : 'transparent',
-      }}>
-        <Container>
-          <Stack alignItems="center" direction="row" justifyContent="space-between" paddingY={1}>
-            <Typography noWrap variant="h6" component={Link} to="/" sx={{
-              fontWeight: 700,
-              color: 'inherit',
-              textDecoration: 'none',
-            }}>
-              Shane Davenport
-            </Typography>
-
-            <Stack alignItems="center" direction="row" spacing={3} padding={0} sx={{
-              display: { xs: 'none', md: 'block' },
-            }}>
-              <TabButton title={'Education'} link='#education' icon={SchoolIcon} />
-              <TabButton title={'Tech Skills'} link='#tech_skills' icon={HandymanIcon} />
-              <TabButton title={'Resume'} link={'/resume'} icon={ArticleIcon} />
-            </Stack>
-          </Stack>
-        </Container>
-      </AppBar>
+      <Navbar title="Homepage" fixed={true} elevation={elevation} tabs={props.tabs}
+        backgroundColor={thresholdTrigger ? 'primary' : 'transparent'} />
 
       <Grid container direction="column" alignItems="center" justifyContent="center">
         <Box sx={{
