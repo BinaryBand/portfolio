@@ -51,22 +51,11 @@ class Skill extends React.Component<SkillProps> {
   }
 }
 
-// function scrollTo(id: string): void {
-//   const target = document.getElementById(id);
-
-//   if (window && target) {
-//     window.scrollTo({
-//       top: target.getBoundingClientRect().top + window.pageYOffset - 64,
-//       behavior: "smooth"
-//     });
-//   }
-// }
-
 type HomePageProps = {
   tabs?: TabData[],
 };
 
-export default function Experimental(props: HomePageProps): JSX.Element {
+export default function HomePage(props: HomePageProps): JSX.Element {
   const primaryColor: string = '#1976d2';
 
   const thresholdTrigger: boolean = useScrollTrigger({
@@ -77,7 +66,7 @@ export default function Experimental(props: HomePageProps): JSX.Element {
 
   return (
     <>
-      <Navbar title="Homepage" fixed={true} elevation={elevation} tabs={props.tabs}
+      <Navbar title="Shane Davenport" fixed={true} elevation={elevation} tabs={props.tabs}
         backgroundColor={thresholdTrigger ? 'primary' : 'transparent'} />
 
       <Grid container direction="column" alignItems="center" justifyContent="center">

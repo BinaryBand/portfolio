@@ -10,10 +10,27 @@ import HandymanIcon from '@mui/icons-material/Handyman';
 import ArticleIcon from '@mui/icons-material/Article';
 
 
+function scrollToTop() {
+  window.scrollTo({ top: 0 });
+};
+
+// TODO: There has to be a better solution for this.
+function scrollTo(id: string): void {
+  window.setTimeout((): void => {
+    const target = document.getElementById(id);
+    if (window && target) {
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.pageYOffset - 72,
+        behavior: "smooth"
+      });
+    }
+  }, 30);
+}
+
 const TABS: TabData[] = [
-  { title: 'Education', link: '/#education', icon: SchoolIcon },
-  { title: 'Tech Skills', link: '/#tech_skills', icon: HandymanIcon },
-  { title: 'Resume', link: '/resume', icon: ArticleIcon },
+  { title: 'Education', link: '/', onClick: () => scrollTo('education'), icon: SchoolIcon },
+  { title: 'Tech Skills', link: '/', onClick: () => scrollTo('tech_skills'), icon: HandymanIcon },
+  { title: 'Resume', link: '/resume', onClick: scrollToTop, icon: ArticleIcon },
 ];
 
 export default function App(): JSX.Element {
