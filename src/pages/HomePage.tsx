@@ -94,8 +94,14 @@ export default function HomePage(props: HomePageProps): JSX.Element {
               </Typography>
 
               <Stack direction="row" spacing={3} marginY={3} justifyContent="center">
-                <Button variant="contained" size="large" href="https://www.linkedin.com/in/shane-m-davenport/" target="_blank" startIcon={<LinkedInIcon />}>LinkedIn</Button>
-                <Button variant="contained" size="large" href="https://github.com/BinaryBand/" target="_blank" startIcon={<GitHubIcon />}>GitHub</Button>
+                <Button variant="contained" size="large" startIcon={<LinkedInIcon />}
+                  href="https://www.linkedin.com/in/shane-m-davenport/" target="_blank">
+                    LinkedIn
+                </Button>
+                <Button variant="contained" size="large" startIcon={<GitHubIcon />}
+                  href="https://github.com/BinaryBand/" target="_blank">
+                    GitHub
+                </Button>
               </Stack>
             </Box>
           </Container>

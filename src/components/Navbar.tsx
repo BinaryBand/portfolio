@@ -26,31 +26,17 @@ import { Link } from "react-router-dom";
 export type TabData = {
   title: string;
   link: string;
-  onClick?: () => void;
   icon: SvgIconComponent;
 };
 
-interface TabButtonProps extends TabData {
+interface NavButtonProps extends TabData {
   active?: boolean;
 };
 
-class TabButton extends React.Component<TabButtonProps> {
-  constructor(props: TabButtonProps) {
-    super(props);
-
-    this.onClickWrapper = this.onClickWrapper.bind(this);
-  }
-
-  private onClickWrapper(): void {
-    if (this.props.onClick) {
-      this.props.onClick();
-    }
-  }
-
+class TabButton extends React.Component<NavButtonProps> {
   public render(): JSX.Element {
     return (
-      <Button key={this.props.title} component={Link} to={this.props.link} startIcon={<this.props.icon />}
-        onClick={this.onClickWrapper} sx={{
+      <Button key={this.props.title} component={Link} to={this.props.link} startIcon={<this.props.icon />} sx={{
         fontWeight: 500,
         color: 'inherit',
         position: 'relative',
@@ -129,13 +115,13 @@ export default class Navbar extends React.Component<NavbarProps> {
       <>
         <AppBar position={this.position} elevation={this.props.elevation} sx={{
           backgroundColor: this.props.backgroundColor,
-          paddingY: 1,
+          paddingY: { sm: 0, md: 1 },
         }}>
           <Container>
             <Stack alignItems="center" direction="row" justifyContent="space-between" paddingY={1}>
               <IconButton aria-label="open drawer" color="inherit" onClick={this.openDrawer} sx={{
                 display: { xs: 'block', md: 'none' },
-                marginTop: 1,
+                // marginTop: 1,
               }}>
                 <MenuIcon />
               </IconButton>
@@ -154,7 +140,7 @@ export default class Navbar extends React.Component<NavbarProps> {
                 {
                   this.props.tabs?.map((tab: TabData): JSX.Element => {
                     return (
-                      <TabButton title={tab.title} link={tab.link} onClick={tab.onClick} icon={tab.icon}
+                      <TabButton title={tab.title} link={tab.link} icon={tab.icon}
                         active={this.props.currentPath === tab.link} />
                     );
                   })
@@ -194,7 +180,7 @@ export default class Navbar extends React.Component<NavbarProps> {
               this.props.tabs?.map((tab: TabData): JSX.Element => {
                 return (
                   <ListItem key={tab.title} disablePadding>
-                    <ListItemButton component={Link} to={tab.link} onClick={this.closeDrawer}>
+                    <ListItemButton component={Link} to={tab.link}>
                       <ListItemIcon>
                         <SvgIcon component={tab.icon} />
                       </ListItemIcon>
