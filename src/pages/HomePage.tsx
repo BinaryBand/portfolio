@@ -1,6 +1,3 @@
-import React from "react";
-
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Grid from '@mui/material/Unstable_Grid2';
@@ -10,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import CodeIcon from '@mui/icons-material/Code';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HtmlIcon from '@mui/icons-material/Html';
 import CssIcon from '@mui/icons-material/Css';
@@ -20,39 +16,19 @@ import AndroidIcon from '@mui/icons-material/Android';
 import CloudIcon from '@mui/icons-material/Cloud';
 import DataArrayIcon from '@mui/icons-material/DataArray';
 import DataObjectIcon from '@mui/icons-material/DataObject';
-import SvgIcon from "@mui/icons-material/Code";
-import { SvgIconComponent } from "@mui/icons-material";
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-import Footer from "../components/Footer";
-import Navbar, { TabData } from "../components/Navbar";
+import Navbar, { TabData } from '../components/Navbar';
+import Header from '../components/home/Header';
+import Project, { Ingredient } from '../components/home/Project';
+import Skill from '../components/home/Skill';
+import Footer from '../components/Footer';
 
+import { Link } from "react-router-dom";
 
-type SkillProps = {
-  title: string;
-  icon: SvgIconComponent;
-  color: string;
-};
-
-class Skill extends React.Component<SkillProps> {
-  public render(): JSX.Element {
-    return (
-      <Grid xs={6} sm={4} md={3}>
-        <Paper sx={{ height: 180 }}>
-          <Stack direction="column" alignItems="center" justifyContent="space-between" paddingY={1}>
-            <SvgIcon component={this.props.icon} sx={{ fontSize: 64, color: this.props.color }} />
-
-            <Typography variant="h5" my={3} sx={{ textAlign: 'center' }}>
-              {this.props.title}
-            </Typography>
-          </Stack>
-        </Paper>
-      </Grid>
-    );
-  }
-}
 
 type HomePageProps = {
-  tabs?: TabData[],
+  tabs?: TabData[];
 };
 
 export default function HomePage(props: HomePageProps): JSX.Element {
@@ -60,77 +36,68 @@ export default function HomePage(props: HomePageProps): JSX.Element {
 
   const thresholdTrigger: boolean = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 90,
+    threshold: 80,
   });
+  const paddingY: number = thresholdTrigger ? 0 : 2;
   const elevation: number = thresholdTrigger ? 5 : 0;
 
   return (
     <>
-      <Navbar title="Shane Davenport" fixed={true} elevation={elevation} tabs={props.tabs}
+      <Navbar title="Shane Davenport" fixed={true} elevation={elevation} tabs={props.tabs} paddingY={paddingY}
         backgroundColor={thresholdTrigger ? 'primary' : 'transparent'} />
 
-      <Grid container direction="column" alignItems="center" justifyContent="center">
-        <Box sx={{
-          transition: '0.3s',
-          boxShadow: 3,
-          maxWidth: '100%',
-          width: thresholdTrigger ? 900 : '100%',
-          borderRadius: {
-            xs: 0,
-            md: thresholdTrigger ? '5px' : 0,
-          },
-          paddingTop: 5,
-          backgroundColor: '#181a1b',
-          color: 'white',
-        }}>
-          <Container maxWidth="sm">
-            <Box paddingY={7}>
-              <Typography variant="h2" mb={4}>
-                Hi, I'm <span style={{ color: primaryColor }}>Shane</span>
-              </Typography>
-
-              <Typography variant="h5" mb={4} sx={{ textAlign: 'justify' }}>
-                I'm currently working as a software developer at <a href="https://byui.edu/" style={{ color: primaryColor }}>Brigham Young University — Idaho.</a> I spend my day-to-day developing projects with TypeScript, React.js, Node.js and Google Cloud. 
-              </Typography>
-
-              <Stack direction="row" spacing={3} marginY={3} justifyContent="center">
-                <Button variant="contained" size="large" startIcon={<LinkedInIcon />}
-                  href="https://www.linkedin.com/in/shane-m-davenport/" target="_blank">
-                    LinkedIn
-                </Button>
-                <Button variant="contained" size="large" startIcon={<GitHubIcon />}
-                  href="https://github.com/BinaryBand/" target="_blank">
-                    GitHub
-                </Button>
-              </Stack>
-            </Box>
-          </Container>
-        </Box>
-      </Grid>
+      <Header color={primaryColor} />
 
       <Container maxWidth="md">
-        <Typography variant="h4" my={5} id="education">
-          My <span style={{ color: primaryColor }}>Education</span>
+        <Stack direction="row" alignItems="center" justifyContent="space-between" id="projects" mt={4}>
+          <Typography variant="h4">
+            My <span style={{ color: primaryColor }}>Projects</span>
+          </Typography>
+          {/* <Button component={Link} to="/projects" variant="text" endIcon={<ArrowRightIcon />}>
+            More
+          </Button> */}
+        </Stack>
+
+        <Typography variant="subtitle1" mb={4}>
+          Under Construction
         </Typography>
 
+        <Project title="Crypto Pi"
+          imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
+          codeLink="https://github.com/BinaryBand/crypto-pi"
+          ingredients={[
+            <Ingredient label="Python" icon={CodeIcon} color="#ffd242" />,
+          ]}>
+          Several cryptography functions written from scratch in Python including ed25519, secp256k1, sha-1, sha-256, and sha-512. This project is not designed to be used in production.
+        </Project>
+
+        <Project />
+        <Project />
+
+        <Typography variant="h4" id="education" my={4}>
+          <span style={{ color: primaryColor }}>Education</span>
+        </Typography>
+        
         <Paper elevation={3} sx={{ padding: 3 }}>
           <Stack direction="row">
-            <Grid container direction="row" alignItems="center" justifyContent="center" spacing={3}>
+            <Grid container direction="row" alignItems="center" spacing={3}>
               <Grid xs={12} sm={5} md={4}>
-                <img alt="Brigham Young University — Idaho logo" src="/images/ClipartKey_918318.png" width="100%" />
+                <img alt="Brigham Young University — Idaho logo" src="images/ClipartKey_918318.png" width="100%" />
               </Grid>
               <Grid xs={12} sm={7} md={8}>
                 <Typography variant="h5" component="div">
                   Brigham Young University — Idaho
                 </Typography>
-                <Typography variant="subtitle2">
+                <Typography variant="subtitle2" mb={3}>
                   AUGUST 2016 - MARCH 2021
                 </Typography>
-                <ul>
-                  <li>Bachelor of Science in Software Engineering</li>
-                  <li>Minor in Computer Information Technology</li>
-                  <li>Associates of Applied Science in Computer Programming</li>
-                </ul>
+                <Typography variant="body1" sx={{ lineHeight: 2 }}>
+                  Bachelor of Science in Software Engineering
+                  <br />
+                  Minor in Computer Information Technology
+                  <br />
+                  Associates of Applied Science in Computer Programming
+                </Typography>
               </Grid>
             </Grid>
           </Stack>

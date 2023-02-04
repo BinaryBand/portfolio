@@ -80,10 +80,12 @@ type NavbarProps = {
   fixed?: boolean;
   backgroundColor?: string;
   elevation?: number;
+  paddingY?: number;
 };
 
 type NavbarState = {
   isDrawerOpen: boolean;
+
 };
 
 export default class Navbar extends React.Component<NavbarProps> {
@@ -114,14 +116,14 @@ export default class Navbar extends React.Component<NavbarProps> {
     return (
       <>
         <AppBar position={this.position} elevation={this.props.elevation} sx={{
+          transition: '0.2s',
           backgroundColor: this.props.backgroundColor,
-          paddingY: { sm: 0, md: 1 },
+          paddingY: this.props.paddingY || 0,
         }}>
           <Container>
             <Stack alignItems="center" direction="row" justifyContent="space-between" paddingY={1}>
               <IconButton aria-label="open drawer" color="inherit" onClick={this.openDrawer} sx={{
                 display: { xs: 'block', md: 'none' },
-                // marginTop: 1,
               }}>
                 <MenuIcon />
               </IconButton>

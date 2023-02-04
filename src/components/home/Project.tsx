@@ -1,0 +1,147 @@
+import React from "react";
+
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Grid from '@mui/material/Unstable_Grid2';
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+import Skeleton from '@mui/material/Skeleton';
+import Popover from '@mui/material/Popover';
+
+import { SvgIconComponent } from "@mui/icons-material";
+
+
+type IngredientProps = {
+  label?: string;
+  icon?: SvgIconComponent;
+  color?: string;
+};
+
+type IngredientState = {
+  anchorEl: HTMLElement | null;
+};
+
+export class Ingredient extends React.Component<IngredientProps> {
+  public state: IngredientState = { anchorEl: null };
+
+  constructor(props: IngredientProps) {
+    super(props);
+
+    this.handlePopoverOpen = this.handlePopoverOpen.bind(this);
+    this.handlePopoverClose = this.handlePopoverClose.bind(this);
+  }
+
+  private handlePopoverOpen(event: React.MouseEvent<HTMLElement>): void {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  private handlePopoverClose(): void {
+    this.setState({ anchorEl: null });
+  };
+
+  public render(): JSX.Element {
+    const open: boolean = Boolean(this.props.label && this.state.anchorEl);
+
+    return (
+      <>
+        <Box onMouseEnter={this.handlePopoverOpen} onMouseLeave={this.handlePopoverClose}>
+          {
+            this.props.icon
+              ? <this.props.icon sx={{ color: this.props.color || 'gray', height: 32, width: 32 }} />
+              : <Skeleton variant="rounded" width={32} height={32} />
+          }
+        </Box>
+
+        <Popover id="mouse-over-popover" anchorEl={this.state.anchorEl} open={open} sx={{
+            pointerEvents: 'none',
+          }}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          onClose={this.handlePopoverClose}
+          disableRestoreFocus>
+          <Typography sx={{ p: 1 }}>
+            {this.props.label}
+          </Typography>
+        </Popover>
+      </>
+    );
+  }
+}
+
+type ProjectProps = {
+  title?: string;
+  imgSrc?: string;
+  ingredients?: JSX.Element[];
+  children?: string;
+  demoLink?: string;
+  codeLink?: string;
+};
+
+export default class Project extends React.Component<ProjectProps> {
+  public render(): JSX.Element {
+    return (
+      <Grid container spacing={5}>
+        <Grid xs={12} sm={7} md={5}>
+          {
+            this.props.imgSrc
+              ? <img alt={`${this.props.title || 'Project'} thumbnail`} src={this.props.imgSrc} width="100%" style={{ borderRadius: 5 }} />
+              : <Skeleton variant="rounded" height="100%" />
+          }
+        </Grid>
+
+        <Grid xs={12} sm={5} md={7}>
+          <Stack direction="column" spacing={1}>
+            <Typography variant="h5">
+              {this.props.title || <Skeleton variant="text" />}
+            </Typography>
+
+            <Stack direction="row" alignItems="center" spacing={2}>
+              <Typography variant="h6">Made With: </Typography>
+
+              {
+                this.props.ingredients || <>
+                  <Ingredient />
+                  <Ingredient />
+                  <Ingredient />
+                </>
+              }
+            </Stack>
+
+            <Typography variant="body1">
+              {
+                this.props.children || <>
+                  <Skeleton variant="text" />
+                  <Skeleton variant="text" />
+                  <Skeleton variant="text" />
+                  <Skeleton variant="text" sx={{ width: '60%' }} />
+                </>
+              }
+            </Typography>
+
+            <Stack direction="row" spacing={2} marginY={2}>
+              {
+                this.props.demoLink
+                  ? <Button variant="contained" startIcon={<PlayArrowIcon />} href={this.props.demoLink} target="_blank">Demo</Button>
+                  : <></>
+              }
+              {
+                this.props.codeLink
+                  ? <Button variant="outlined" startIcon={<GitHubIcon />} href={this.props.codeLink} target="_blank">Code</Button>
+                  : <></>
+              }
+            </Stack>
+          </Stack>
+        </Grid>
+      </Grid>
+    );
+  }
+}

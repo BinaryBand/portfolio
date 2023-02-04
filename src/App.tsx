@@ -2,6 +2,7 @@ import React from "react";
 
 import HomePage from "./pages/HomePage";
 import NoPage from "./pages/NoPage";
+import ProjectsPage from "./pages/ProjectsPage";
 import ResumePage from "./pages/ResumePage";
 import MasterLayout from "./components/MasterLayout";
 import { TabData } from "./components/Navbar";
@@ -51,6 +52,7 @@ export default function App(): JSX.Element {
           <Route index element={<HomePage tabs={TABS} />} />
 
           <Route path="/" element={<MasterLayout tabs={TABS} />}>
+            <Route path="projects" element={<ProjectsPage />} />
             <Route path="resume" element={<ResumePage />} />
             <Route path="*" element={<NoPage />} />
           </Route>

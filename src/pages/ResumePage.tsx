@@ -2,6 +2,7 @@
 
 // import Button from '@mui/material/Button';
 // import Fab from '@mui/material/Fab';
+import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 
 // import DownloadIcon from '@mui/icons-material/Download';
@@ -31,9 +32,13 @@ export default function HomePage(): JSX.Element {
 
   return (
     <>
+      <Container maxWidth="md" sx={{ marginY: 3 }}>
+        <Resume />
+      </Container>
+
       <Grid container spacing={2} marginY={2}>
         <Grid xs={12} md={10}>
-          <Resume />
+          {/* <Resume /> */}
         </Grid>
         <Grid xs={2} sx={{ display: { xs: 'none', md: 'block' }}}>
 
