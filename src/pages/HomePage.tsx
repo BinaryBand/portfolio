@@ -6,8 +6,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 
-import CodeIcon from '@mui/icons-material/Code';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import HtmlIcon from '@mui/icons-material/Html';
 import CssIcon from '@mui/icons-material/Css';
 import JavascriptIcon from '@mui/icons-material/Javascript';
@@ -15,7 +13,6 @@ import AppleIcon from '@mui/icons-material/Apple';
 import AndroidIcon from '@mui/icons-material/Android';
 import CloudIcon from '@mui/icons-material/Cloud';
 import DataArrayIcon from '@mui/icons-material/DataArray';
-import DataObjectIcon from '@mui/icons-material/DataObject';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 import Navbar, { TabData } from '../components/Navbar';
@@ -53,9 +50,9 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           <Typography variant="h4">
             My <span style={{ color: primaryColor }}>Projects</span>
           </Typography>
-          {/* <Button component={Link} to="/projects" variant="text" endIcon={<ArrowRightIcon />}>
+          <Button component={Link} to="/projects" variant="text" endIcon={<ArrowRightIcon />}>
             More
-          </Button> */}
+          </Button>
         </Stack>
 
         <Typography variant="subtitle1" mb={4}>
@@ -63,16 +60,43 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Typography>
 
         <Project title="Crypto Pi"
-          imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
+          // imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
           codeLink="https://github.com/BinaryBand/crypto-pi"
           ingredients={[
-            <Ingredient label="Python" icon={CodeIcon} color="#ffd242" />,
+            <Ingredient label="Python" iconSrc="icons/python.svg" />,
           ]}>
           Several cryptography functions written from scratch in Python including ed25519, secp256k1, sha-1, sha-256, and sha-512. This project is not designed to be used in production.
         </Project>
 
-        <Project />
-        <Project />
+        <Project title="ExpressJS Backend"
+          // imgSrc="images/express_screenshot.png"
+          codeLink="https://github.com/BinaryBand/express-backend"
+          ingredients={[
+            <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
+            <Ingredient label="ExpressJS" color="#353535" />,
+            <Ingredient label="HandleBarsJS" iconSrc="icons/handlebars-logo.png" />,
+            <Ingredient label="Bootstrap" iconSrc="icons/bootstrap.svg" />,
+            <Ingredient label="SQLite" iconSrc="icons/database-solid.svg" />,
+          ]}>
+          This project is a web application that allows users to create an account and authenticate using a cryptographic-generated token. The project is built using Express.js, Bootstrap, sqlite3, and Handlebars.
+        </Project>
+
+        <Project title="One-Time Password"
+          // imgSrc="images/one-time-password-screenshot.png"
+          demoLink="https://www.npmjs.com/package/one-time-password"
+          codeLink="https://github.com/BinaryBand/one-time-password"
+          ingredients={[
+            <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
+          ]}>
+          A simple, NPM library for deriving one-time passwords from a base32 key.
+        </Project>
+
+        <Project title="Java Game Engine"
+          // imgSrc="images/one-time-password-screenshot.png"
+          codeLink="https://github.com/BinaryBand/java-game"
+          ingredients={[
+            <Ingredient label="Java" iconSrc="icons/java.svg" />,
+          ]} />
 
         <Typography variant="h4" id="education" my={4}>
           <span style={{ color: primaryColor }}>Education</span>
@@ -111,12 +135,14 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           <Skill title="HTML" icon={HtmlIcon} color="#e24d27" />
           <Skill title="CSS" icon={CssIcon} color="#1572b7" />
           <Skill title="JavaScript" icon={JavascriptIcon} color="#e5a126" />
+          <Skill title="Typescript" iconSrc="icons/typescript-icon.jpeg" />
+          <Skill title="React" iconSrc="icons/react.svg" />
           <Skill title="C++" icon={DataArrayIcon} color="#055a9d" />
-          <Skill title="Java" icon={DataObjectIcon} color="#ef1e28" />
-          <Skill title="Python" icon={CodeIcon} color="#ffd242" />
+          <Skill title="Java" iconSrc="icons/java.svg" />
+          <Skill title="Python" iconSrc="icons/python.svg" />
           <Skill title="Swift" icon={AppleIcon} color="#cccccc" />
           <Skill title="Kotlin" icon={AndroidIcon} color="#1ead5f" />
-          <Skill title="Git" icon={GitHubIcon} color="#de4c36" />
+          <Skill title="Git" iconSrc="icons/code-branch-solid.svg" />
           <Skill title="Google Cloud" icon={CloudIcon} color="#4088ef" />
         </Grid>
       </Container>

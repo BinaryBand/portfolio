@@ -17,6 +17,7 @@ import { SvgIconComponent } from "@mui/icons-material";
 type IngredientProps = {
   label?: string;
   icon?: SvgIconComponent;
+  iconSrc?: string;
   color?: string;
 };
 
@@ -51,7 +52,11 @@ export class Ingredient extends React.Component<IngredientProps> {
           {
             this.props.icon
               ? <this.props.icon sx={{ color: this.props.color || 'gray', height: 32, width: 32 }} />
-              : <Skeleton variant="rounded" width={32} height={32} />
+              : this.props.iconSrc
+                ? <img alt={`${this.props.label || 'Ingredient'} thumbnail`} src={this.props.iconSrc} height={26} />
+                : this.props.label
+                  ? <Typography sx={{ cursor: 'default', color: this.props.color || 'default' }}>{this.props.label}</Typography>
+                  : <Skeleton variant="rounded" width={32} height={32} />
           }
         </Box>
 
