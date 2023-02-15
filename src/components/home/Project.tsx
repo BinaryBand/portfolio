@@ -7,9 +7,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import BuildIcon from '@mui/icons-material/Build';
 
 import Skeleton from '@mui/material/Skeleton';
 import Popover from '@mui/material/Popover';
+import Paper from '@mui/material/Paper';
 
 import { SvgIconComponent } from "@mui/icons-material";
 
@@ -84,11 +86,13 @@ export class Ingredient extends React.Component<IngredientProps> {
 
 type ProjectProps = {
   title?: string;
+  inProgress?: boolean;
   imgSrc?: string;
   ingredients?: JSX.Element[];
   children?: string;
   demoLink?: string;
   codeLink?: string;
+  packageLink?: string;
 };
 
 export default class Project extends React.Component<ProjectProps> {
@@ -98,16 +102,31 @@ export default class Project extends React.Component<ProjectProps> {
         <Grid xs={12} sm={7} md={5}>
           {
             this.props.imgSrc
-              ? <img alt={`${this.props.title || 'Project'} thumbnail`} src={this.props.imgSrc} width="100%" style={{ borderRadius: 5 }} />
-              : <Skeleton variant="rounded" height="100%" />
+              ? <Paper elevation={3} sx={{
+                width: '100%',
+                height: '100%',
+                minHeight: 200,
+                backgroundImage: `url("${this.props.imgSrc}")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+              }} />
+              : <Skeleton variant="rounded" height="100%" sx={{ minHeight: 200 }} />
           }
         </Grid>
 
         <Grid xs={12} sm={5} md={7}>
           <Stack direction="column" spacing={1}>
-            <Typography variant="h5">
-              {this.props.title || <Skeleton variant="text" />}
-            </Typography>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" id="projects">
+              <Typography variant="h5">
+                {this.props.title || <Skeleton variant="text" />}
+              </Typography>
+
+              {
+                this.props.inProgress
+                  ? <Typography variant="subtitle2">In Progress</Typography>
+                  : <></>
+              }
+            </Stack>
 
             <Stack direction="row" alignItems="center" spacing={2}>
               <Typography variant="h6">Made With: </Typography>
@@ -134,13 +153,18 @@ export default class Project extends React.Component<ProjectProps> {
 
             <Stack direction="row" spacing={2} marginY={2}>
               {
-                this.props.demoLink
-                  ? <Button variant="contained" startIcon={<PlayArrowIcon />} href={this.props.demoLink} target="_blank">Demo</Button>
+                this.props.codeLink
+                  ? <Button variant="contained" startIcon={<GitHubIcon />} href={this.props.codeLink} target="_blank">Code</Button>
                   : <></>
               }
               {
-                this.props.codeLink
-                  ? <Button variant="outlined" startIcon={<GitHubIcon />} href={this.props.codeLink} target="_blank">Code</Button>
+                this.props.demoLink
+                  ? <Button variant="outlined" startIcon={<PlayArrowIcon />} href={this.props.demoLink} target="_blank">Demo</Button>
+                  : <></>
+              }
+              {
+                this.props.packageLink
+                  ? <Button variant="outlined" startIcon={<BuildIcon />} href={this.props.packageLink} target="_blank">Package</Button>
                   : <></>
               }
             </Stack>

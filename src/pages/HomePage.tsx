@@ -12,7 +12,6 @@ import JavascriptIcon from '@mui/icons-material/Javascript';
 import AppleIcon from '@mui/icons-material/Apple';
 import AndroidIcon from '@mui/icons-material/Android';
 import CloudIcon from '@mui/icons-material/Cloud';
-import DataArrayIcon from '@mui/icons-material/DataArray';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
 import Navbar, { TabData } from '../components/Navbar';
@@ -60,7 +59,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Typography>
 
         <Project title="Crypto Pi"
-          // imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
+          imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
           codeLink="https://github.com/BinaryBand/crypto-pi"
           ingredients={[
             <Ingredient label="Python" iconSrc="icons/python.svg" />,
@@ -69,7 +68,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Project>
 
         <Project title="ExpressJS Backend"
-          // imgSrc="images/express_screenshot.png"
+          imgSrc="images/express-screenshot.png"
           codeLink="https://github.com/BinaryBand/express-backend"
           ingredients={[
             <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
@@ -82,21 +81,30 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Project>
 
         <Project title="One-Time Password"
-          // imgSrc="images/one-time-password-screenshot.png"
-          demoLink="https://www.npmjs.com/package/one-time-password"
+          imgSrc="images/one-time-password-screenshot.png"
           codeLink="https://github.com/BinaryBand/one-time-password"
+          packageLink="https://www.npmjs.com/package/one-time-password"
           ingredients={[
             <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
+            <Ingredient label="Jest" iconSrc="icons/jest-logo.svg" />,
           ]}>
-          A simple, NPM library for deriving one-time passwords from a base32 key.
+          Leveraging a base32 key, this library generates one-time passwords (OTP) using the Time-based One-Time Password Algorithm (TOTP) to provide robust protection against unauthorized access.
         </Project>
 
-        <Project title="Java Game Engine"
-          // imgSrc="images/one-time-password-screenshot.png"
+        <Project title="Java Game Template"
+          imgSrc="images/java-game-screenshot.png"
           codeLink="https://github.com/BinaryBand/java-game"
           ingredients={[
             <Ingredient label="Java" iconSrc="icons/java.svg" />,
-          ]} />
+          ]}>
+          This game template provides a starting point for creating a 2D platformer game. It features a simple player character, a scrolling camera, and basic collision detection.
+        </Project>
+
+        <Project title="Auth Flow" inProgress ingredients={[
+          <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
+          <Ingredient label="React Native" iconSrc="icons/react.svg" />,
+          <Ingredient label="Jest" iconSrc="icons/jest-logo.svg" />,
+        ]} />
 
         <Typography variant="h4" id="education" my={4}>
           <span style={{ color: primaryColor }}>Education</span>
@@ -135,11 +143,15 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           <Skill title="HTML" icon={HtmlIcon} color="#e24d27" />
           <Skill title="CSS" icon={CssIcon} color="#1572b7" />
           <Skill title="JavaScript" icon={JavascriptIcon} color="#e5a126" />
+          <Skill title="SQL" iconSrc="icons/database-solid.svg" />
           <Skill title="Typescript" iconSrc="icons/typescript-icon.jpeg" />
           <Skill title="React" iconSrc="icons/react.svg" />
-          <Skill title="C++" icon={DataArrayIcon} color="#055a9d" />
+          <Skill title="Dart" iconSrc="icons/dart-logo.svg" />
+          <Skill title="Flutter" iconSrc="icons/flutter-logo.svg" />
+          <Skill title="C / C++" iconSrc="icons/c++-icon.svg" />
           <Skill title="Java" iconSrc="icons/java.svg" />
           <Skill title="Python" iconSrc="icons/python.svg" />
+          <Skill title="Rust" iconSrc="icons/rust.svg" />
           <Skill title="Swift" icon={AppleIcon} color="#cccccc" />
           <Skill title="Kotlin" icon={AndroidIcon} color="#1ead5f" />
           <Skill title="Git" iconSrc="icons/code-branch-solid.svg" />

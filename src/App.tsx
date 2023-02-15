@@ -8,6 +8,7 @@ import MasterLayout from "./components/MasterLayout";
 import { TabData } from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route, Location, useLocation } from "react-router-dom";
 
+import ConstructionIcon from '@mui/icons-material/Construction';
 import SchoolIcon from '@mui/icons-material/School';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import ArticleIcon from '@mui/icons-material/Article';
@@ -39,9 +40,10 @@ function ScrollWrapper(props: ScrollWrapperProps): JSX.Element {
 }
 
 const TABS: TabData[] = [
+  { title: 'Projects', link: '/#projects', icon: ConstructionIcon },
   { title: 'Education', link: '/#education', icon: SchoolIcon },
   { title: 'Tech Skills', link: '/#tech_skills', icon: HandymanIcon },
-  { title: 'Resume', link: '/resume', icon: ArticleIcon },
+  // { title: 'Resume', link: '/resume', icon: ArticleIcon },
 ];
 
 export default function App(): JSX.Element {
