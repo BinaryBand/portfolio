@@ -10,6 +10,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 type HeaderProps = {
   color: string;
+  backgroundColor: string;
 };
 
 export default function Header(props: HeaderProps): JSX.Element {
@@ -20,7 +21,7 @@ export default function Header(props: HeaderProps): JSX.Element {
         boxShadow: 3,
         width: '100%',
         paddingTop: 5,
-        backgroundColor: '#181a1b',
+        backgroundColor: props.backgroundColor,
         color: 'white',
       }}>
         <Container maxWidth="sm">
@@ -34,11 +35,11 @@ export default function Header(props: HeaderProps): JSX.Element {
             </Typography>
 
             <Stack direction="row" spacing={3} marginY={3} justifyContent="center">
-              <Button variant="contained" size="large" startIcon={<LinkedInIcon />}
+              <Button variant="contained" size="large" color="secondary" startIcon={<LinkedInIcon />}
                 href="https://www.linkedin.com/in/shane-m-davenport/" target="_blank">
                   LinkedIn
               </Button>
-              <Button variant="outlined" size="large" startIcon={<GitHubIcon />}
+              <Button variant="outlined" size="large" color="secondary" startIcon={<GitHubIcon />}
                 href="https://github.com/BinaryBand/" target="_blank">
                   GitHub
               </Button>

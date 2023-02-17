@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { useTheme } from '@mui/material/styles';
 
 import HtmlIcon from '@mui/icons-material/Html';
 import CssIcon from '@mui/icons-material/Css';
@@ -28,7 +29,9 @@ type HomePageProps = {
 };
 
 export default function HomePage(props: HomePageProps): JSX.Element {
-  const primaryColor: string = '#1976d2';
+  const theme = useTheme();
+  const primaryColor: string = theme.palette.primary.main;
+  const secondaryColor: string = theme.palette.secondary.dark;
 
   const thresholdTrigger: boolean = useScrollTrigger({
     disableHysteresis: true,
@@ -42,7 +45,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
       <Navbar title="Shane Davenport" fixed={true} elevation={elevation} tabs={props.tabs} paddingY={paddingY}
         backgroundColor={thresholdTrigger ? 'primary' : 'transparent'} />
 
-      <Header color={primaryColor} />
+      <Header color={theme.palette.primary.light} backgroundColor={theme.palette.primary.dark} />
 
       <Container maxWidth="md">
         <Stack direction="row" alignItems="center" justifyContent="space-between" id="projects" mt={4}>

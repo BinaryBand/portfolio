@@ -98,7 +98,7 @@ type ProjectProps = {
 export default class Project extends React.Component<ProjectProps> {
   public render(): JSX.Element {
     return (
-      <Grid container spacing={5}>
+      <Grid container spacing={5} mb={5}>
         <Grid xs={12} sm={7} md={5}>
           {
             this.props.imgSrc
@@ -154,17 +154,17 @@ export default class Project extends React.Component<ProjectProps> {
             <Stack direction="row" spacing={2} marginY={2}>
               {
                 this.props.codeLink
-                  ? <Button variant="contained" startIcon={<GitHubIcon />} href={this.props.codeLink} target="_blank">Code</Button>
+                  ? <Button variant="contained" color="secondary" startIcon={<GitHubIcon />} href={this.props.codeLink} target="_blank">Code</Button>
                   : <></>
               }
               {
                 this.props.demoLink
-                  ? <Button variant="outlined" startIcon={<PlayArrowIcon />} href={this.props.demoLink} target="_blank">Demo</Button>
+                  ? <Button variant="outlined" color="secondary" startIcon={<PlayArrowIcon />} href={this.props.demoLink} target="_blank">Demo</Button>
                   : <></>
               }
               {
                 this.props.packageLink
-                  ? <Button variant="outlined" startIcon={<BuildIcon />} href={this.props.packageLink} target="_blank">Package</Button>
+                  ? <Button variant="outlined" color="secondary" startIcon={<BuildIcon />} href={this.props.packageLink} target="_blank">Package</Button>
                   : <></>
               }
             </Stack>
