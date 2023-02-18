@@ -48,18 +48,34 @@ const TABS: TabData[] = [
   // { title: 'Resume', link: '/resume', icon: ArticleIcon },
 ];
 
+// https://color.adobe.com/create/color-wheel
 // https://m2.material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=546E7A&secondary.color=33691E
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: '#2396c3',
+//       light: '#65c7f6',
+//       dark: '#006892',
+//     },
+//     secondary: {
+//       main: '#9e764a',
+//       light: '#d1a576',
+//       dark: '#6d4a21',
+//     },
+//   },
+// });
+
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#03589c',
-      light: '#5084cd',
-      dark: '#00306d',
+      main: '#1976d2',
+      light: '#63a4ff',
+      dark: '#004ba0',
     },
     secondary: {
-      main: '#2cb7f6',
-      light: '#74e9ff',
-      dark: '#0087c3',
+      main: '#ad7413',
+      light: '#e3a345',
+      dark: '#794900',
     },
   },
 });

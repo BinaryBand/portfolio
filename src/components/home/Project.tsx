@@ -108,7 +108,9 @@ export default class Project extends React.Component<ProjectProps> {
                 minHeight: 200,
                 backgroundImage: `url("${this.props.imgSrc}")`,
                 backgroundRepeat: 'no-repeat',
+
                 backgroundSize: 'cover',
+                backgroundPosition: 'center center',
               }} />
               : <Skeleton variant="rounded" height="100%" sx={{ minHeight: 200 }} />
           }
