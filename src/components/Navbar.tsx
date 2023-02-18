@@ -130,10 +130,11 @@ export default class Navbar extends React.Component<NavbarProps> {
 
               <Typography noWrap variant="h6" component={Link} to="/" sx={{
                 fontWeight: 700,
+                fontFamily: 'monospace',
                 color: 'inherit',
                 textDecoration: 'none',
               }}>
-                {this.props.title}
+                {this.props.title.toUpperCase()}
               </Typography>
 
               <Stack alignItems="center" direction="row" spacing={3} padding={0} sx={{

@@ -31,7 +31,6 @@ type HomePageProps = {
 export default function HomePage(props: HomePageProps): JSX.Element {
   const theme = useTheme();
   const primaryColor: string = theme.palette.primary.main;
-  const secondaryColor: string = theme.palette.secondary.dark;
 
   const thresholdTrigger: boolean = useScrollTrigger({
     disableHysteresis: true,
@@ -62,7 +61,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Typography>
 
         <Project title="Crypto Pi"
-          imgSrc="images/ScreenShot2023-02-04at1.02.03PM.png"
+          imgSrc="https://www.kindpng.com/picc/m/159-1595848_python-logo-png-transparent-background-python-logo-png.png"
           codeLink="https://github.com/BinaryBand/crypto-pi"
           ingredients={[
             <Ingredient label="Python" iconSrc="icons/python.svg" />,
@@ -71,7 +70,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Project>
 
         <Project title="ExpressJS Backend"
-          imgSrc="images/express-screenshot.png"
+          imgSrc="https://tse1.mm.bing.net/th?id=OIP.JX7HIzJM7VspdsIxjwLAKgHaFj&pid=Api"
           codeLink="https://github.com/BinaryBand/express-backend"
           ingredients={[
             <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
@@ -84,7 +83,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         </Project>
 
         <Project title="One-Time Password"
-          imgSrc="images/one-time-password-screenshot.png"
+          imgSrc="https://www.pandasecurity.com/en/mediacenter/src/uploads/2020/12/pandasecurity-iphones-security.jpg"
           codeLink="https://github.com/BinaryBand/one-time-password"
           packageLink="https://www.npmjs.com/package/one-time-password"
           ingredients={[
