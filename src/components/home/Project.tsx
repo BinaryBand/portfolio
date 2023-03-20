@@ -75,7 +75,7 @@ export class Ingredient extends React.Component<IngredientProps> {
           }}
           onClose={this.handlePopoverClose}
           disableRestoreFocus>
-          <Typography sx={{ p: 1 }}>
+          <Typography variant="body2" sx={{ p: 1 }}>
             {this.props.label}
           </Typography>
         </Popover>
@@ -98,7 +98,7 @@ type ProjectProps = {
 export default class Project extends React.Component<ProjectProps> {
   public render(): JSX.Element {
     return (
-      <Grid container spacing={5} mb={5}>
+      <Grid container columnSpacing={4} mb={5}>
         <Grid xs={12} sm={7} md={5}>
           {
             this.props.imgSrc
@@ -130,7 +130,7 @@ export default class Project extends React.Component<ProjectProps> {
               }
             </Stack>
 
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row" maxWidth="100%" alignItems="center" spacing={2}>
               <Typography variant="h6">Made With: </Typography>
 
               {
@@ -142,7 +142,7 @@ export default class Project extends React.Component<ProjectProps> {
               }
             </Stack>
 
-            <Typography variant="body1">
+            <Typography variant="body2">
               {
                 this.props.children || <>
                   <Skeleton variant="text" />

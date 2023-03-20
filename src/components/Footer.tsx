@@ -24,7 +24,7 @@ export default class Footer extends React.Component {
       }}>
         <Container>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Typography variant="h6">
+            <Typography color="inherit" variant="h6">
               Shane Davenport
             </Typography>
             <Stack direction="row">

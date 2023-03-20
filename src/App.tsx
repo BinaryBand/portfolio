@@ -50,22 +50,52 @@ const TABS: TabData[] = [
 
 // https://color.adobe.com/create/color-wheel
 // https://m2.material.io/resources/color/#!/?view.left=0&view.right=1&primary.color=546E7A&secondary.color=33691E
-// const theme = createTheme({
-//   palette: {
-//     primary: {
-//       main: '#2396c3',
-//       light: '#65c7f6',
-//       dark: '#006892',
-//     },
-//     secondary: {
-//       main: '#9e764a',
-//       light: '#d1a576',
-//       dark: '#6d4a21',
-//     },
-//   },
-// });
-
 const theme = createTheme({
+  typography: {
+    h1: {
+      color: '#ffffffee',
+      fontSize: 48,
+      fontWeight: 'bold',
+    },
+    h2: {
+      color: '#ffffffdd',
+      fontSize: 32,
+      fontWeight: 'semibold',
+    },
+    h3: {
+      color: '#000000cc',
+      fontSize: 28,
+      fontWeight: 'semibold',
+    },
+    h4: {
+      color: '#000000bb',
+      fontSize: 24,
+      fontWeight: 'semibold',
+    },
+    h5: {
+      color: '#000000aa',
+      fontSize: 20,
+      fontWeight: 'medium',
+    },
+    h6: {
+      color: '#00000099',
+      fontSize: 18,
+      fontWeight: 'medium',
+    },
+    body1: {
+      color: '#ffffff88',
+      fontSize: 18,
+      fontWeight: 'medium',
+      lineHeight: '175%',
+    },
+    body2: {
+      color: '#00000088',
+      fontSize: 14,
+      fontWeight: 'medium',
+      lineHeight: '175%',
+    },
+    fontFamily: 'Roboto, Poppins, Arial',
+  },
   palette: {
     primary: {
       main: '#1976d2',
@@ -73,9 +103,9 @@ const theme = createTheme({
       dark: '#004ba0',
     },
     secondary: {
-      main: '#a86600',
-      light: '#de9439',
-      dark: '#743b00',
+      main: '#D1382E',
+      light: '#D97871',
+      dark: '#9E2B23',
     },
   },
 });

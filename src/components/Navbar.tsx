@@ -45,7 +45,7 @@ class TabButton extends React.Component<NavButtonProps> {
           content: "''",
           position: 'absolute',
           width: this.props.active ? '100%' : 0,
-          height: '2px',
+          height: '1px',
           bottom: 0,
           left: '50%',
           transform: 'translate(-50%,0%)',
@@ -85,7 +85,6 @@ type NavbarProps = {
 
 type NavbarState = {
   isDrawerOpen: boolean;
-
 };
 
 export default class Navbar extends React.Component<NavbarProps> {
