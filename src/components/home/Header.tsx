@@ -20,14 +20,11 @@ export default function Header(props: HeaderProps): JSX.Element {
         transition: '0.3s',
         width: '100%',
         backgroundColor: '#222' || props.backgroundColor,
-        // background: 'url("https://i.pinimg.com/originals/0c/1f/74/0c1f748f5702c12423c3720d4cce4cc4.png")',
-        // backgroundRepeat: 'no-repeat',
-        // backgroundSize: 'cover',
         clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0% 100%)',
       }}>
         <Container maxWidth="md">
           <Grid container>
-            <Grid xs={7}>
+            <Grid xs={12} sm={7}>
               <Box paddingY={10}>
                 <Stack spacing={3} alignItems="left">
                   <Typography variant="h1">
