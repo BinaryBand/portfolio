@@ -100,6 +100,15 @@ export default function HomePage(props: HomePageProps): JSX.Element {
           This game template provides a starting point for creating a 2D platformer game. It features a simple player character, a scrolling camera, and basic collision detection.
         </Project>
 
+        <Project title="Wordle Solver Bookmarklet"
+          imgSrc="https://images.macrumors.com/t/zOCafmfJYd6tJf2Bju7xoICoVt8=/1200x1200/smart/article-new/2022/01/wordle.jpg"
+          codeLink="https://github.com/BinaryBand/wordle-solver"
+          ingredients={[
+            <Ingredient label="Javascript" icon={JavascriptIcon} color="#e5a126" />,
+          ]}>
+          The Wordle Solver is a JavaScript bookmarklet that helps you solve the NYTimes Wordle puzzle quickly and easily. It pulls a word list from my GitHub repository and uses it to recommend the next word to try based on the present, absent, and correct letters.
+        </Project>
+
         <Project title="Auth Flow" inProgress ingredients={[
           <Ingredient label="TypeScript" iconSrc="icons/typescript-icon.jpeg" />,
           <Ingredient label="React Native" iconSrc="icons/react.svg" />,
@@ -109,7 +118,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         <Typography variant="h4" id="education" my={4}>
           <span style={{ color: primaryColor }}>Education</span>
         </Typography>
-        
+
         <Paper elevation={3} sx={{ padding: 3 }}>
           <Stack direction="row">
             <Grid container direction="row" alignItems="center" spacing={10}>

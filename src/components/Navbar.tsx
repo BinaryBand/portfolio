@@ -142,7 +142,7 @@ export default class Navbar extends React.Component<NavbarProps> {
                 {
                   this.props.tabs?.map((tab: TabData): JSX.Element => {
                     return (
-                      <TabButton title={tab.title} link={tab.link} icon={tab.icon}
+                      <TabButton key={tab.title} title={tab.title} link={tab.link} icon={tab.icon}
                         active={this.props.currentPath === tab.link} />
                     );
                   })
